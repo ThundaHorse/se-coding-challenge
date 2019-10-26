@@ -6,7 +6,8 @@ export class App extends Component {
     url: "",
     alt: "",
     datePosted: "",
-    title: ""
+    title: "",
+    number: ""
   };
 
   render() {
@@ -14,9 +15,9 @@ export class App extends Component {
       <div className="container">
         <br />
         <p>
-          Date Posted
+          Date Posted: <strong>{this.state.datePosted}</strong>
           <br />
-          <strong>{this.state.datePosted}</strong>
+          Comic #: {this.state.number}
         </p>
         <br />
         <h1>{this.state.title}</h1>
@@ -37,6 +38,7 @@ export class App extends Component {
     let imgAlt = `${imgData.alt}`;
     let title = `${imgData.title}`;
     let date = `${imgData.month}-${imgData.day}-${imgData.year}`;
+    let num = `${imgData.num}`;
 
     this.setState({
       ...this.state,
@@ -44,7 +46,8 @@ export class App extends Component {
         url: imgUrl,
         alt: imgAlt,
         datePosted: date,
-        title: title
+        title: title,
+        number: num
       }
     });
   }

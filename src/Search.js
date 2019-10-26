@@ -6,8 +6,9 @@ export class Search extends Component {
     query: "",
     url: "",
     alt: "",
-    datePosted: "",
-    title: ""
+    datePosted: "-",
+    title: "",
+    number: "-"
   };
 
   onChange = e => this.setState({ query: e.target.value });
@@ -22,8 +23,9 @@ export class Search extends Component {
           ...{
             url: imgData.img,
             alt: imgData.alt,
-            date: `${imgData.month}-${imgData.day}-${imgData.year}`,
-            title: imgData.title
+            datePosted: `${imgData.month}-${imgData.day}-${imgData.year}`,
+            title: imgData.title,
+            number: imgData.num
           }
         });
       });
@@ -46,12 +48,19 @@ export class Search extends Component {
             Search
           </button>
         </form>
-        <br />
-        {this.state.date}
+        <p>
+          Date Posted: <strong>{this.state.datePosted}</strong>
+          <br />
+          Comic #: {this.state.number}
+        </p>
         <br />
         <h1>{this.state.title}</h1>
         <br />
-        <img src={this.state.url} alt={this.state.alt} />
+        <img
+          src={this.state.url}
+          alt={this.state.alt}
+          className="searchImage"
+        />
       </div>
     );
   }
