@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export class App extends Component {
+export class Search extends Component {
   state = {
     url: "",
     alt: ""
@@ -11,17 +11,14 @@ export class App extends Component {
     return (
       <div className="container">
         <br />
-        <img
-          className="latestImage"
-          src={this.state.url}
-          alt={this.state.alt}
-        />
+        <input type="text"></input>
+        <h1>Test</h1>
       </div>
     );
   }
 
   async componentDidMount() {
-    let imgRequest = await axios.get("https://xkcd.now.sh/?comic=latest");
+    let imgRequest = await axios.get("https://xkcd.now.sh/?comic=303");
     let imgData = imgRequest.data;
     let imgUrl = `${imgData.img}`;
     let imgAlt = `${imgData.alt}`;
@@ -36,4 +33,4 @@ export class App extends Component {
   }
 }
 
-export default App;
+export default Search;
