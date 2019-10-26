@@ -37,14 +37,18 @@ export class Search extends Component {
         <br />
         <form className="form-inline md-form mb-4" onSubmit={this.onSubmit}>
           <input
-            className="form-control"
+            className="searchInput form-control"
             type="text"
             placeholder="Search"
             aria-label="Search"
             value={this.state.query}
             onChange={this.onChange}
           />
-          <button className="btn btn-primary" value="subtmi" type="submit">
+          <button
+            className="searchSubmit btn btn-primary"
+            value="subtmi"
+            type="submit"
+          >
             Search
           </button>
         </form>
