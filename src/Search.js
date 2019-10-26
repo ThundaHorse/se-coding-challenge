@@ -5,7 +5,9 @@ export class Search extends Component {
   state = {
     query: "",
     url: "",
-    alt: ""
+    alt: "",
+    datePosted: "",
+    title: ""
   };
 
   onChange = e => this.setState({ query: e.target.value });
@@ -14,9 +16,15 @@ export class Search extends Component {
     axios
       .get(`https://xkcd.now.sh/?comic=${this.state.query}`)
       .then(response => {
+        let imgData = response.data;
         this.setState({
           ...this.state,
-          ...{ url: response.data.img, alt: response.data.alt }
+          ...{
+            url: imgData.img,
+            alt: imgData.alt,
+            date: `${imgData.month}-${imgData.day}-${imgData.year}`,
+            title: imgData.title
+          }
         });
       });
   };
@@ -38,6 +46,11 @@ export class Search extends Component {
             Search
           </button>
         </form>
+        <br />
+        {this.state.date}
+        <br />
+        <h1>{this.state.title}</h1>
+        <br />
         <img src={this.state.url} alt={this.state.alt} />
       </div>
     );

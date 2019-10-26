@@ -4,12 +4,22 @@ import axios from "axios";
 export class App extends Component {
   state = {
     url: "",
-    alt: ""
+    alt: "",
+    datePosted: "",
+    title: ""
   };
 
   render() {
     return (
       <div className="container">
+        <br />
+        <p>
+          Date Posted
+          <br />
+          <strong>{this.state.datePosted}</strong>
+        </p>
+        <br />
+        <h1>{this.state.title}</h1>
         <br />
         <img
           className="latestImage"
@@ -25,12 +35,16 @@ export class App extends Component {
     let imgData = imgRequest.data;
     let imgUrl = `${imgData.img}`;
     let imgAlt = `${imgData.alt}`;
+    let title = `${imgData.title}`;
+    let date = `${imgData.month}-${imgData.day}-${imgData.year}`;
 
     this.setState({
       ...this.state,
       ...{
         url: imgUrl,
-        alt: imgAlt
+        alt: imgAlt,
+        datePosted: date,
+        title: title
       }
     });
   }
