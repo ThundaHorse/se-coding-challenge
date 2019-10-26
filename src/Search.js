@@ -7,7 +7,7 @@ export class Search extends Component {
     url: "",
     alt: "",
     datePosted: "-",
-    title: "",
+    title: "Nothing yet ¯|_(ツ)_/¯",
     number: "-"
   };
 
